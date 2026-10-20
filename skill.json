@@ -1,0 +1,73 @@
+{
+  "name": "genpark-agentic-commerce-gift-card-balance-draining-fraud-sentinel-skill",
+  "version": "1.0.0",
+  "title": "Commerce Gift Card Balance Enumeration & Draining Sentinel Skill",
+  "description": "Automated merchant gift card brute-force balance enumeration detection, botnet credential stuffing pattern recognition, and tokenized gift card locking shield. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "gift-card-fraud",
+    "balance-draining",
+    "bot-mitigation",
+    "credential-stuffing",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "detect_balance_check_anomaly",
+      "description": "Analyze velocity and IP entropy of gift card balance inquiry requests to detect automated enumeration bot attacks.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "type": "integer"
+          },
+          "unique_ip_count": {
+            "type": "integer"
+          },
+          "invalid_pin_failure_rate_pct": {
+            "type": "number"
+          },
+          "card_prefix_sequential_score": {
+            "type": "number",
+            "description": "0.0 to 1.0"
+          }
+        },
+        "required": [
+          "requests_per_minute",
+          "unique_ip_count",
+          "invalid_pin_failure_rate_pct"
+        ]
+      }
+    },
+    {
+      "name": "apply_protective_card_freeze",
+      "description": "Lock compromised gift card ranges and enforce CAPTCHA rate limits on balance check endpoints.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string"
+          },
+          "threat_score": {
+            "type": "number"
+          },
+          "suspected_botnet_cidrs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "incident_id",
+          "threat_score",
+          "suspected_botnet_cidrs"
+        ]
+      }
+    }
+  ]
+}
